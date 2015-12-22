@@ -50,7 +50,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
 }
 #pragma mark -
 //MARK: Init
@@ -147,7 +147,9 @@
 }
 //MARK: Action
 - (void)cancel:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+//    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)confirm:(id)sender {
