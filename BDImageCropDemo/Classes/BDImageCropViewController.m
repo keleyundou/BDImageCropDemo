@@ -31,7 +31,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     [self setupSubViews];
     // Do any additional setup after loading the view.
 }
@@ -99,7 +99,6 @@
 {
     if (!_overlayView) {
         _overlayView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height )];
-//        _overlayView.backgroundColor = [UIColor blackColor];
         _overlayView.userInteractionEnabled = YES;
         _overlayView.opaque = NO;
     }
@@ -110,8 +109,15 @@
 {
     if (!_toolBarView) {
         _toolBarView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.frame) - 64, CGRectGetWidth(self.view.frame), 64)];
-        _toolBarView.layer.backgroundColor = [UIColor blackColor].CGColor;
-        _toolBarView.layer.opacity = 0.5;
+        
+        UIBezierPath * path= [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        CAShapeLayer *layer = [CAShapeLayer layer];
+        [path setUsesEvenOddFillRule:YES];
+        layer.path = path.CGPath;
+        layer.fillRule = kCAFillRuleEvenOdd;
+        layer.fillColor = [[UIColor grayColor] CGColor];
+        layer.opacity = 0.5;
+        [_toolBarView.layer addSublayer:layer];
         //cancle
         UIButton *cancleButton = [UIButton buttonWithType:UIButtonTypeCustom];
         cancleButton.titleLabel.textColor = [UIColor whiteColor];
