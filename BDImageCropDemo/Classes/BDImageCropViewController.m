@@ -115,7 +115,7 @@
         [path setUsesEvenOddFillRule:YES];
         layer.path = path.CGPath;
         layer.fillRule = kCAFillRuleEvenOdd;
-        layer.fillColor = [[UIColor grayColor] CGColor];
+        layer.fillColor = [[UIColor blackColor] CGColor];
         layer.opacity = 0.5;
         [_toolBarView.layer addSublayer:layer];
         //cancle
